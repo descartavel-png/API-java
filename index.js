@@ -34,7 +34,7 @@ app.post("/v1/chat/completions", async (req, res) => {
     const charPersonality = messages.find(m => m.role === 'system')?.content || "";
     
     const payload = {
-      model:"z-ai/glm-5.2:free",
+      model:"minimax/minimax-m3:free",
       messages: [
         { role: "system", content: charPersonality }, // A personalidade SEMPRE inteira aqui
         { role: "system", content: `Resumo do histórico: ${summary}` },

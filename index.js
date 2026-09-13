@@ -34,14 +34,14 @@ app.post("/v1/chat/completions", async (req, res) => {
     const charPersonality = messages.find(m => m.role === 'system')?.content || "";
     
     const payload = {
-      model:"qwen3.8-27b:free",
+      model:"ling-3.0-flash-fin:free",
       messages: [
         { role: "system", content: charPersonality }, // A personalidade SEMPRE inteira aqui
         { role: "system", content: `Resumo do histórico: ${summary}` },
         ...lastMessages
       ],
       max_tokens: 16384, 
-      temperature: 0.6,
+      temperature: 0.8,
       top_p: 0.95
     };
 

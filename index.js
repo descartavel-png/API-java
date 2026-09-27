@@ -68,19 +68,7 @@ app.post("/v1/chat/completions", async (req, res) => {
       console.log("--- TEXTO RECEBIDO ---");
       console.log(content.substring(0, 100) + "..."); // Isso vai mostrar no seu terminal se o <think> chegou
 
-      // 3. REMOÇÃO AGRESSIVA:
-      // Remove o bloco completo <think>...</think>
-      content = content.replace(/<think>[\s\S]*?<\/think>/gi, "");
-      
-      // Remove tags <think> ou </think> que sobraram sozinhas
-      content = content.replace(/<\/?think>/gi, "");
-      
-      // Remove qualquer coisa que tenha sobrado se o modelo foi cortado no meio do pensamento
-      content = content.replace(/^[\s\S]*?<\/think>/gi, ""); 
 
-      // 4. Devolve o texto limpo para o objeto
-      responseData.choices[0].message.content = content.trim();
-      
     }
 
     // Envia para o Janitor AI
